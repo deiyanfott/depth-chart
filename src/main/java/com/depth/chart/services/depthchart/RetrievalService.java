@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -29,13 +28,18 @@ public class RetrievalService {
 
     public List<PlayerDTO> getBackups(PositionDTO positionDTO, long teamId) {
         Team team = teamService.getTeam(teamId);
-        Player player = playerService.getPlayer(positionDTO.getPlayerDTO().getNumber(), team);
+        Position position = positionService.getPosition(positionDTO.getPosition(), team);
 
-        if (player.getNumber() == null || player.getNumber().isEmpty()) {
-            return new ArrayList<PlayerDTO>();
+        if (position.getPosition() == null || position.getPosition().isEmpty()) {
+            return new ArrayList<>();
         }
 
-        Position position = positionService.getPosition(positionDTO.getPosition(), team);
+        Player player = playerService.getPlayer(positionDTO.getPlayerDTO().getNumber(), position, team);
+
+        if (player.getNumber() == null || player.getNumber().isEmpty()) {
+            return new ArrayList<>();
+        }
+
         List<Player> backups = getBackups(position.getPlayers(), player.getPositionDepth());
         return getBackupDTOs(backups);
     }
@@ -54,7 +58,7 @@ public class RetrievalService {
     }
 
     private List<Player>getBackups(List<Player> players, int positionDepth) {
-        return players.stream().filter(getBackups(positionDepth)).collect(Collectors.toList());
+        return players.stream().filter(getBackups(positionDepth)).toList();
     }
 
     private Predicate<Player> getBackups(int positionDepth) {

@@ -1,6 +1,7 @@
 package com.depth.chart.services.sports;
 
 import com.depth.chart.entities.Player;
+import com.depth.chart.entities.Position;
 import com.depth.chart.entities.Team;
 import com.depth.chart.repository.PlayerRepository;
 import jakarta.transaction.Transactional;
@@ -22,8 +23,9 @@ public class PlayerService {
         playerRepository.saveAll(players);
     }
 
-    public Player getPlayer(String number, Team team) {
-        Optional<Player> optionalPlayer = playerRepository.findByNumberAndTeam(number, team);
+    public Player getPlayer(String number, Position position, Team team) {
+        Optional<Player> optionalPlayer = playerRepository
+                .findByNumberAndPositionAndTeam(number, position, team);
         return optionalPlayer.orElseGet(Player::new);
     }
 }
