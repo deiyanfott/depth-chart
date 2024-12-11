@@ -25,13 +25,16 @@
 * Logging - Logging using Slf4j and only via console (no log file creation)
 * Swagger - To avoid using Postman
 * Lombok - To reduce boilerplate code
-* Remove player - There is no validation check for the name. As long as number is valid and existing, it should remove appropriate record
 * Adding sports and different teams - Initial load can be done through a create.sql file, and APIs, objects, etc. can be created after. All these are hypothetical and no concrete implementation yet.
 * Thread safety - Assumption is that this is a single user system, so it was not taken into consideration
 * Player Number - Used String instead of int as there can be '00' and '0' as player numbers. Uniqueness is based on team id + player number combination
 * Position Depth - Default value of -1 if not specified in request
+
+### Potential Issues that I de-prioritised
 * Used post instead of get for get backups API (not much of a param value fan)
 * Depth Chart - I am not displaying the team names so it can be quite confusing if the same positions are available in all teams
+* Position Depth - This is shown in all request bodies but is only needed in the add-players API. Please remove it for the other APIs as it may cause unexpected behaviours
+* Remove player - There is no validation check for the name. As long as number is valid and existing, it should remove appropriate record
 
 ### Validation Checks
 * Player number - Must be a valid integer that ranges from 0-99
