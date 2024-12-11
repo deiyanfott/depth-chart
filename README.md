@@ -48,6 +48,12 @@ This is a spring boot application with default port 8080.
 * [Get player backup](http://localhost:8080/api/v1/depth-chart/{leagueId}/{teamId}/get-backups)
 * [Get full depth chart](http://localhost:8080/api/v1/depth-chart/{leagueId}/{teamId}/get-full-depth-chart)
 
+### Http Status Codes Meaning
+* 200 - Removal of player or retrieval of depth chart or backups were successful
+* 201 - Adding player to depth chart was successful
+* 204 - <NO LIST> requirement. If player request input was not removed, there are no backups, or no depth chart is available
+* 400 - There is something wrong with the request body input
+
 ### URLs
 * [H2DB UI](http://localhost:8080/h2-console)
 * [Swagger UI](http://localhost:8080/swagger-ui/index.html)
