@@ -29,6 +29,7 @@
 * Thread safety - Assumption is that this is a single user system, so it was not taken into consideration
 * Player Number - Used String instead of int as there can be '00' and '0' as player numbers. Uniqueness is based on team id + player number combination
 * Position Depth - Default value of -1 if not specified in request
+* Did not focus much on exception and error handling (DataIntegrityViolation, etc.)
 
 ### Potential Issues that I de-prioritised
 * Used post instead of get for get backups API (not much of a param value fan)
