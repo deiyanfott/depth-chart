@@ -171,6 +171,21 @@ class DepthChartEndpointTest {
 
     @Test
     @Order(11)
+    void whenAddPlayerExistingPlayerToADifferentPositionIsInvoked_thenReturn201() throws Exception {
+        mockMvc.perform(put("/api/v1/depth-chart/{leagueId}/{teamId}/add-player", 1, 1)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{" +
+                                "  \"position\": \"LWR\"," +
+                                "  \"playerDTO\": {" +
+                                "    \"name\": \"Dak Prescott\"," +
+                                "    \"number\": \"4\"" +
+                                "  }" +
+                                "}"))
+                .andExpect(status().isCreated());
+    }
+
+    @Test
+    @Order(12)
     void whenAddPlayerWithInvalidPositionDepthIsInvoked_thenReturn400() throws Exception {
         mockMvc.perform(put("/api/v1/depth-chart/{leagueId}/{teamId}/add-player", 1, 1)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -186,7 +201,7 @@ class DepthChartEndpointTest {
     }
 
     @Test
-    @Order(12)
+    @Order(13)
     void whenRemoveExistingPlayersIsInvoked_thenReturn200() throws Exception {
         mockMvc.perform(post("/api/v1/depth-chart/{leagueId}/{teamId}/get-backups", 1, 1).contentType(MediaType.APPLICATION_JSON)
                         .content("{" +
@@ -200,7 +215,7 @@ class DepthChartEndpointTest {
     }
 
     @Test
-    @Order(13)
+    @Order(14)
     void whenGetBackupsWithValuesIsInvoked_thenReturn200() throws Exception {
         mockMvc.perform(post("/api/v1/depth-chart/{leagueId}/{teamId}/get-backups", 1, 1).contentType(MediaType.APPLICATION_JSON)
                         .content("{" +
@@ -214,7 +229,7 @@ class DepthChartEndpointTest {
     }
 
     @Test
-    @Order(14)
+    @Order(15)
     void whenGetBackupsLowestPriorityIsInvoked_thenReturn204() throws Exception {
         mockMvc.perform(post("/api/v1/depth-chart/{leagueId}/{teamId}/get-backups", 1, 1).contentType(MediaType.APPLICATION_JSON)
                         .content("{" +
@@ -228,7 +243,7 @@ class DepthChartEndpointTest {
     }
 
     @Test
-    @Order(15)
+    @Order(16)
     void whenGetFullDepthChartWithValuesIsInvoked_thenReturn200() throws Exception {
         mockMvc.perform(get("/api/v1/depth-chart/{leagueId}/get-full-depth-chart", 1))
                 .andExpect(status().isOk());
