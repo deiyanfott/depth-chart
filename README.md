@@ -27,7 +27,7 @@
 * Lombok - To reduce boilerplate code
 * Adding sports and different teams - Initial load can be done through a create.sql file, and APIs, objects, etc. can be created after. All these are hypothetical and no concrete implementation yet.
 * Thread safety - Assumption is that this is a single user system, so it was not taken into consideration
-* Player Number - Used String instead of int as there can be '00' and '0' as player numbers. Uniqueness is based on team id + player number combination
+* Player Number - Used String instead of int as there can be '00' and '0' as player numbers. Uniqueness is based on team + position + number combination
 * Position Depth - Default value of -1 if not specified in request
 * Did not focus much on exception and error handling (DataIntegrityViolation, etc.)
 
