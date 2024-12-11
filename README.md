@@ -34,7 +34,7 @@
 * Used post instead of get for get backups API (not much of a param value fan)
 * Depth Chart - I am not displaying the team names so it can be quite confusing if the same positions are available in all teams
 * Position Depth - This is shown in all request bodies but is only needed in the add-players API. Please remove it for the other APIs as it may cause unexpected behaviours
-* Remove player - There is no validation check for the name. As long as number is valid and existing, it should remove appropriate record
+* Remove player and get backups - There is no validation check for the name. As long as number is valid and existing, it should remove appropriate record or retrieve the backups, if any.
 
 ### Validation Checks
 * Player number - Must be a valid integer that ranges from 0-99
