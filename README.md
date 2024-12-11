@@ -39,7 +39,7 @@
 * Position Depth - Value can be anything if position in that team has no players yet, but once a depth chart exists, it should be between -1 to the max list size of the depth chart that corresponds to the team and position
 
 ### Starting the application
-This is a spring boot application with default port 8080.
+This is a spring boot application with default port 8080. Just run DepthChartApplication.java in your IDE. Alternatively, you can do a one time configuration set up for the java class
 
 ### Endpoints
 {leagueId} is just a placeholder for any int value. This is not used in the application yet. Change {teamId} to the appropriate values. See team id mapping above.
